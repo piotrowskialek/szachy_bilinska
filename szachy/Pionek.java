@@ -49,7 +49,8 @@ public class Pionek extends Bierka {
 
 			try {
 				/* sprawdz bicie po skosie w prawo */
-				if (szachownica[rzedy + 1][kolumny + 1].getFigura() != null) {
+				if (szachownica[rzedy + 1][kolumny + 1].getFigura() != null
+						&& szachownica[rzedy + 1][kolumny + 1].getFigura().getKolorFigury() != Kolor.BIALY) {
 					listaRuchow.add(new int[] { rzedy + 1, kolumny + 1 });
 				}
 			} catch (IndexOutOfBoundsException e) {
@@ -57,7 +58,8 @@ public class Pionek extends Bierka {
 
 			try {
 				/* sprawdz po skosie w lewo */
-				if (szachownica[rzedy + 1][kolumny - 1].getFigura() != null) {
+				if (szachownica[rzedy + 1][kolumny - 1].getFigura() != null
+						&& szachownica[rzedy + 1][kolumny - 1].getFigura().getKolorFigury() != Kolor.BIALY) {
 					listaRuchow.add(new int[] { rzedy + 1, kolumny - 1 });
 				}
 			} catch (IndexOutOfBoundsException e) {
@@ -75,7 +77,8 @@ public class Pionek extends Bierka {
 
 			try {
 				/* sprawdz bicie po skosie w prawo */
-				if (szachownica[rzedy - 1][kolumny + 1].getFigura() != null) {
+				if (szachownica[rzedy - 1][kolumny + 1].getFigura() != null
+						&& szachownica[rzedy - 1][kolumny + 1].getFigura().getKolorFigury() != Kolor.CZARNY) {
 					listaRuchow.add(new int[] { rzedy - 1, kolumny + 1 });
 				}
 			} catch (IndexOutOfBoundsException e) {
@@ -83,7 +86,8 @@ public class Pionek extends Bierka {
 
 			try {
 				/* sprawdz po skosie w lewo */
-				if (szachownica[rzedy - 1][kolumny - 1].getFigura() != null) {
+				if (szachownica[rzedy - 1][kolumny - 1].getFigura() != null
+						&& szachownica[rzedy - 1][kolumny - 1].getFigura().getKolorFigury() != Kolor.CZARNY) {
 					listaRuchow.add(new int[] { rzedy - 1, kolumny - 1 });
 				}
 			} catch (IndexOutOfBoundsException e) {

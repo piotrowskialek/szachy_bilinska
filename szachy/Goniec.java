@@ -21,8 +21,10 @@ public class Goniec extends Bierka {
 	}
 
 	@Override
-	public List<int []> pobierzListeRuchow(Pole[][] szachownica, int[] wspolrzedne) {
-		List<int []> listaRuchow = new ArrayList<int []>();
+	public List<int[]> pobierzListeRuchow(Pole[][] szachownica, int[] wspolrzedne) {
+		List<int[]> listaRuchow = new ArrayList<int[]>();
+		int rzedy = wspolrzedne[0], kolumny = wspolrzedne[1];
+
 		return listaRuchow;
 	}
 }

@@ -78,22 +78,22 @@ public class Szachy {
 
 	public boolean krecaSie() {
 
-		int licznikKrolow = 0;
+		int licznikKroli = 0;
 		Kolor kolor = null;
 
 		for (int i = 0; i < 8; i++)
 			for (int j = 0; j < 8; j++)
 				if (szachownica[i][j].getFigura() instanceof Krol) { // if 2
 																		// krolowie
-					if (licznikKrolow == 1)
+					if (licznikKroli == 1)
 						return true;
 					else {
-						licznikKrolow++;
+						licznikKroli++;
 						kolor = szachownica[i][j].getFigura().getKolorFigury();
 					}
 				}
 
-		if (licznikKrolow == 1)
+		if (licznikKroli < 2)		//sprawdzic sytuacje zbija krola i drugi znowu zbija
 			System.out.println("Koniec gry. Wygral gracz: " + kolor.name() + " zbijajac krola.");
 
 		return false;
@@ -104,15 +104,14 @@ public class Szachy {
 		Szachy szachy = new Szachy();
 		szachy.ustawBierki();
 
-		while (szachy.krecaSie() && szachy.licznikTur != 50 && szachy.statusGraczy) {
+		do {
 			szachy.drukujSzachownice();
 			
 			szachy.statusGraczy &= (szachy.graczBialy.wykonajRuch(szachy.szachownica)
-					& szachy.graczCzarny.wykonajRuch(szachy.szachownica));
+					&& szachy.graczCzarny.wykonajRuch(szachy.szachownica));
 
-			//System.out.println(new Random().nextInt(10));
 			szachy.licznikTur++;
-		}
+		} while (szachy.krecaSie() && szachy.licznikTur != 50 && szachy.statusGraczy);
 
 		if (szachy.licznikTur == 50)
 			System.out.println("Koniec gry. Remis.");

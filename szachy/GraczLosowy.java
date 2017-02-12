@@ -82,15 +82,15 @@ public class GraczLosowy implements IGracz {
 				szachownica[wspolrzedneKoncowe[0]][wspolrzedneKoncowe[1]].setFigura(losowaBierka);
 
 				System.out.println("Ruch bez bicia gracza: " + this.getKolor() + " " + losowaBierka + " z pola: ("
-						+ (8-poczatkoweWspolrzedne[0]) + "," + (char) (poczatkoweWspolrzedne[1]+65) + ") na pole: ("
-						+ (8-wspolrzedneKoncowe[0]) + "," + (char) (wspolrzedneKoncowe[1]+65) + ")");
+						+ (poczatkoweWspolrzedne[0]+1) + "," + (char) (poczatkoweWspolrzedne[1]+65) + ") na pole: ("
+						+ (wspolrzedneKoncowe[0]+1) + "," + (char) (wspolrzedneKoncowe[1]+65) + ")");
 				return true;
 
 			} else { // bicie
 
 				System.out.println("Bicie gracza: " + this.getKolor() + " " + losowaBierka + " z pola: ("
-						+ (8-poczatkoweWspolrzedne[0]) + "," + (char) (poczatkoweWspolrzedne[1]+65) + ") na pole: ("
-						+ (8-wspolrzedneKoncowe[0]) + "," + (char) (wspolrzedneKoncowe[1]+65) + ")" + " zbija: "
+						+ (poczatkoweWspolrzedne[0]+1) + "," + (char) (poczatkoweWspolrzedne[1]+65) + ") na pole: ("
+						+ (wspolrzedneKoncowe[0]+1) + "," + (char) (wspolrzedneKoncowe[1]+65) + ")" + " zbija: "
 						+ szachownica[wspolrzedneKoncowe[0]][wspolrzedneKoncowe[1]].getFigura());
 
 				szachownica[wspolrzedneKoncowe[0]][wspolrzedneKoncowe[1]].setFigura(losowaBierka);
