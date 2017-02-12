@@ -25,9 +25,6 @@ public class GraczLosowy implements IGracz {
 
 	public boolean wykonajRuch(Pole[][] szachownica) {
 
-		// HashMap<Bierka, List<int[]> > mozliweRuchy = new HashMap<Bierka,
-		// List<int[]>>();
-
 		HashMap<Bierka, int[]> listaBierekZIchWspolrzednymi = new HashMap<Bierka, int[]>();
 		int[] poczatkoweWspolrzedne;
 
@@ -40,7 +37,7 @@ public class GraczLosowy implements IGracz {
 
 					// znalezc liste wszystkich pionków gracza, wylosować jeden,
 					// sprawdzić jakie ma ruchy, wybrać jeden, jak nie to
-					// losowac kolejny i tak do usranej śmierci
+					// losowac kolejny i tak do śmierci
 				}
 			}
 
@@ -53,8 +50,7 @@ public class GraczLosowy implements IGracz {
 				return false;
 
 			} else {
-
-				losowaBierka = listaBierekZIchWspolrzednymi.keySet().stream().collect(Collectors.toList())
+				losowaBierka = new ArrayList<Bierka>(listaBierekZIchWspolrzednymi.keySet())
 						.get(new Random().nextInt(listaBierekZIchWspolrzednymi.size()));
 
 				poczatkoweWspolrzedne = listaBierekZIchWspolrzednymi.get(losowaBierka);
@@ -70,10 +66,6 @@ public class GraczLosowy implements IGracz {
 
 			int[] wspolrzedneKoncowe = listaRuchow.get(new Random().nextInt(listaRuchow.size()));
 
-			// wykonaj
-
-			System.out.println("Losowa: " + losowaBierka);
-
 			szachownica[poczatkoweWspolrzedne[0]][poczatkoweWspolrzedne[1]].setFigura(null);
 
 			if (szachownica[wspolrzedneKoncowe[0]][wspolrzedneKoncowe[1]].getFigura() == null) { // ruch
@@ -82,15 +74,15 @@ public class GraczLosowy implements IGracz {
 				szachownica[wspolrzedneKoncowe[0]][wspolrzedneKoncowe[1]].setFigura(losowaBierka);
 
 				System.out.println("Ruch bez bicia gracza: " + this.getKolor() + " " + losowaBierka + " z pola: ("
-						+ (poczatkoweWspolrzedne[0]+1) + "," + (char) (poczatkoweWspolrzedne[1]+65) + ") na pole: ("
-						+ (wspolrzedneKoncowe[0]+1) + "," + (char) (wspolrzedneKoncowe[1]+65) + ")");
+						+ (poczatkoweWspolrzedne[0] + 1) + "," + (char) (poczatkoweWspolrzedne[1] + 65) + ") na pole: ("
+						+ (wspolrzedneKoncowe[0] + 1) + "," + (char) (wspolrzedneKoncowe[1] + 65) + ")");
 				return true;
 
 			} else { // bicie
 
 				System.out.println("Bicie gracza: " + this.getKolor() + " " + losowaBierka + " z pola: ("
-						+ (poczatkoweWspolrzedne[0]+1) + "," + (char) (poczatkoweWspolrzedne[1]+65) + ") na pole: ("
-						+ (wspolrzedneKoncowe[0]+1) + "," + (char) (wspolrzedneKoncowe[1]+65) + ")" + " zbija: "
+						+ (poczatkoweWspolrzedne[0] + 1) + "," + (char) (poczatkoweWspolrzedne[1] + 65) + ") na pole: ("
+						+ (wspolrzedneKoncowe[0] + 1) + "," + (char) (wspolrzedneKoncowe[1] + 65) + ")" + " zbija: "
 						+ szachownica[wspolrzedneKoncowe[0]][wspolrzedneKoncowe[1]].getFigura());
 
 				szachownica[wspolrzedneKoncowe[0]][wspolrzedneKoncowe[1]].setFigura(losowaBierka);
@@ -102,7 +94,7 @@ public class GraczLosowy implements IGracz {
 			// wynik
 
 		}
-		
+
 		System.out.println("Gracz " + this.kolor.name() + " przegral. Brak dostepnych ruchow.");
 
 		return false;

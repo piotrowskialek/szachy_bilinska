@@ -59,6 +59,8 @@ public class Szachy {
 
 	public void drukujSzachownice() {
 
+		System.out.print(" ");
+		
 		for (char i = 'A'; i != 'I'; i++) {
 			System.out.print(" " + i + " ");
 		}
@@ -93,31 +95,40 @@ public class Szachy {
 					}
 				}
 
-		if (licznikKroli < 2)		//sprawdzic sytuacje zbija krola i drugi znowu zbija
+		if (licznikKroli < 2) // sprawdzic sytuacje zbija krola i drugi znowu
+								// zbija
 			System.out.println("Koniec gry. Wygral gracz: " + kolor.name() + " zbijajac krola.");
 
 		return false;
 	}
 
-	public static void main(String[] args) {
+	public void rozpocznijGre() {
 
-		Szachy szachy = new Szachy();
-		szachy.ustawBierki();
+		this.ustawBierki();
 
 		do {
-			szachy.drukujSzachownice();
-			
-			szachy.statusGraczy &= (szachy.graczBialy.wykonajRuch(szachy.szachownica)
-					&& szachy.graczCzarny.wykonajRuch(szachy.szachownica));
+			this.drukujSzachownice();
 
-			szachy.licznikTur++;
-		} while (szachy.krecaSie() && szachy.licznikTur != 50 && szachy.statusGraczy);
+			this.statusGraczy = this.graczBialy.wykonajRuch(this.szachownica);
 
-		if (szachy.licznikTur == 50)
+			if (!this.krecaSie()) { // moze byc sytuacja ze bialy zbil krola
+										// gdyby nie ten if
+										// czarny mimo to gralby dalej przez 1
+										// ture
+
+				break;
+			}
+
+			this.statusGraczy &= this.graczCzarny.wykonajRuch(this.szachownica);
+
+			this.licznikTur++;
+		} while (this.krecaSie() && this.licznikTur != 50 && this.statusGraczy);
+
+		if (this.licznikTur == 50)
 			System.out.println("Koniec gry. Remis.");
 
-		szachy.drukujSzachownice();
-		
+		this.drukujSzachownice();
+
 	}
 
 }
