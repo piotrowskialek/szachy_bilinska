@@ -1,6 +1,9 @@
 
 package szachy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author aleksandra
@@ -19,5 +22,11 @@ public class Hetman extends Bierka {
 
 		else
 			return "h";
+	}
+
+	@Override
+	public List<int []> pobierzListeRuchow(Pole[][] szachownica, int[] wspolrzedne) {
+		List<int []> listaRuchow = new ArrayList<int []>();
+		return listaRuchow;
 	}
 }

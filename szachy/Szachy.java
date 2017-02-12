@@ -1,12 +1,14 @@
 
 package szachy;
 
+import java.util.Random;
+
 public class Szachy {
 
 	private Pole[][] szachownica = new Pole[8][8];
 	private int licznikTur = 0;
-	private Gracz graczBialy = new Gracz(Kolor.BIALY);
-	private Gracz graczCzarny = new Gracz(Kolor.CZARNY);
+	private GraczLosowy graczBialy = new GraczLosowy(Kolor.BIALY);
+	private GraczLosowy graczCzarny = new GraczLosowy(Kolor.CZARNY);
 	private boolean statusGraczy = true;
 
 	private void ustawBierki() {
@@ -92,7 +94,7 @@ public class Szachy {
 				}
 
 		if (licznikKrolow == 1)
-			System.out.println("Koniec gry. Wygral gracz: " + kolor.name());
+			System.out.println("Koniec gry. Wygral gracz: " + kolor.name() + " zbijajac krola.");
 
 		return false;
 	}
@@ -108,12 +110,15 @@ public class Szachy {
 			szachy.statusGraczy &= (szachy.graczBialy.wykonajRuch(szachy.szachownica)
 					& szachy.graczCzarny.wykonajRuch(szachy.szachownica));
 
+			//System.out.println(new Random().nextInt(10));
 			szachy.licznikTur++;
 		}
 
 		if (szachy.licznikTur == 50)
 			System.out.println("Koniec gry. Remis.");
 
+		szachy.drukujSzachownice();
+		
 	}
 
 }

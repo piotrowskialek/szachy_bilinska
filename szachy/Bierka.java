@@ -1,6 +1,8 @@
 
 package szachy;
 
+import java.util.List;
+
 public abstract class Bierka {
 	private Kolor kolorFigury;
 
@@ -15,5 +17,7 @@ public abstract class Bierka {
 	public void setKolorFigury(Kolor kolorFigury) {
 		this.kolorFigury = kolorFigury;
 	}
-
+	
+	public abstract List<int []> pobierzListeRuchow(Pole[][] szachownica, int[] wspolrzedne);
+	
 }

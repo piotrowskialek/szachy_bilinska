@@ -5,6 +5,10 @@
  */
 package szachy;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+
 /**
  *
  * @author aleksandra
@@ -23,5 +27,70 @@ public class Pionek extends Bierka {
 
 		else
 			return "p";
+	}
+
+	@Override
+	public List<int[]> pobierzListeRuchow(Pole[][] szachownica, int[] wspolrzedne) {
+
+		int rzedy = wspolrzedne[0], kolumny = wspolrzedne[1];
+
+		List<int[]> listaRuchow = new ArrayList<int[]>();
+
+		// czy mozesz isc do przodu lub bic po skosie
+		if (this.getKolorFigury() == Kolor.BIALY) { // idz w dol
+
+			try { // rows then columns...
+				/* sprawdz do przodu */
+				if (szachownica[rzedy + 1][kolumny].getFigura() == null) {
+					listaRuchow.add(new int[] { rzedy + 1, kolumny });
+				}
+			} catch (IndexOutOfBoundsException e) {
+			}
+
+			try {
+				/* sprawdz bicie po skosie w prawo */
+				if (szachownica[rzedy + 1][kolumny + 1].getFigura() != null) {
+					listaRuchow.add(new int[] { rzedy + 1, kolumny + 1 });
+				}
+			} catch (IndexOutOfBoundsException e) {
+			}
+
+			try {
+				/* sprawdz po skosie w lewo */
+				if (szachownica[rzedy + 1][kolumny - 1].getFigura() != null) {
+					listaRuchow.add(new int[] { rzedy + 1, kolumny - 1 });
+				}
+			} catch (IndexOutOfBoundsException e) {
+			}
+
+		} else { // idz w gore
+
+			try { // rows then columns...
+				/* sprawdz do przodu */
+				if (szachownica[rzedy - 1][kolumny].getFigura() == null) {
+					listaRuchow.add(new int[] { rzedy - 1, kolumny });
+				}
+			} catch (IndexOutOfBoundsException e) {
+			}
+
+			try {
+				/* sprawdz bicie po skosie w prawo */
+				if (szachownica[rzedy - 1][kolumny + 1].getFigura() != null) {
+					listaRuchow.add(new int[] { rzedy - 1, kolumny + 1 });
+				}
+			} catch (IndexOutOfBoundsException e) {
+			}
+
+			try {
+				/* sprawdz po skosie w lewo */
+				if (szachownica[rzedy - 1][kolumny - 1].getFigura() != null) {
+					listaRuchow.add(new int[] { rzedy - 1, kolumny - 1 });
+				}
+			} catch (IndexOutOfBoundsException e) {
+			}
+		}
+
+		return listaRuchow;
+
 	}
 }

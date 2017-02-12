@@ -1,6 +1,9 @@
 
 package szachy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Goniec extends Bierka {
 
 	public Goniec(Kolor kolor) {
@@ -15,5 +18,11 @@ public class Goniec extends Bierka {
 
 		else
 			return "g";
+	}
+
+	@Override
+	public List<int []> pobierzListeRuchow(Pole[][] szachownica, int[] wspolrzedne) {
+		List<int []> listaRuchow = new ArrayList<int []>();
+		return listaRuchow;
 	}
 }

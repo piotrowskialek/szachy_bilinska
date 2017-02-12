@@ -5,6 +5,9 @@
  */
 package szachy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author aleksandra
@@ -23,5 +26,11 @@ public class Krol extends Bierka {
 
 		else
 			return "k";
+	}
+
+	@Override
+	public List<int []> pobierzListeRuchow(Pole[][] szachownica, int[] wspolrzedne) {
+		List<int []> listaRuchow = new ArrayList<int []>();
+		return listaRuchow;
 	}
 }
